@@ -28,20 +28,20 @@ export class VisualComponent {
       } else {
         this.events = {
           requestSucceeded: {
-            description: '当数据接口请求成功时',
+            description: 'on_data_request_success',
           },
           requestFailed: {
-            description: '当数据接口请求失败时',
+            description: 'on_data_request_failure',
           },
           ...configs['events'],
         };
 
         this.actions = {
           requestData: {
-            description: '请求数据',
+            description: 'request_data',
           },
           render: {
-            description: '导入数据',
+            description: 'render_data',
           },
           ...configs['actions'],
           ...this.actions,
@@ -73,19 +73,19 @@ export class VisualComponent {
   /** 动作 */
   actions: VisualActions = {
     updateAttr: {
-      description: '更新组件属性',
+      description: 'update_component_attr',
     },
     updateOptions: {
-      description: '更新组件配置',
+      description: 'update_component_options',
     },
     show: {
-      description: '显示',
+      description: 'show',
     },
     hide: {
-      description: '隐藏',
+      description: 'hide',
     },
     toggleHide: {
-      description: '切换显隐',
+      description: 'toggle_visibility',
     },
   };
 
@@ -230,4 +230,7 @@ export class VisualComponent {
   detectChanges() {
     this._changeDetectorRef.detectChanges();
   }
+
+  /** 状态完成回调事件，主要用于包含子组件的情况，确保加载子组件时所需实例已经初始化 */
+  completed(params: Record<string, any>) {}
 }
