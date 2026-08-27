@@ -231,6 +231,6 @@ export class VisualComponent {
     this._changeDetectorRef.detectChanges();
   }
 
-  /** 状态完成回调事件，主要用于包含子组件的情况，确保加载子组件时所需实例已经初始化 */
-  completed(params: Record<string, any>) {}
+  /** 第三方实例初始化后的回调事件，主要用于包含子组件的情况，确保加载子组件时所需实例已经初始化 */
+  onReady() {}
 }
